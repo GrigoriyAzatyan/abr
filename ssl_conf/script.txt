@@ -1,0 +1,32 @@
+
+#########################################################################
+# Читаем переменные, делаем их доступными при каждом входе пользователя #
+#########################################################################
+
+cat /openssl/secrets | tee -a /home/sirius/.bashrc
+
+
+##############################
+# Генерируем сертификаты SSL #
+##############################
+
+cd /openssl
+
+#Создание CA
+openssl genrsa -out ./sirius_CA/root_ca.key -passout pass:sirius 4096
+openssl req -config ./openssl.cnf -key ./sirius_CA/root_ca.key -new -x509 -days 7300 -sha256 -extensions v3_ca -out  ./sirius_CA/root_ca.crt  -subj "/C=RU/ST=Perm Kray/L=Perm/O=Sirius/CN=Sirius_CA"
+touch ./sirius_CA/index.txt
+echo 00 > ./sirius_CA/serial
+
+# Выпуск сертификатов сервера. Запрос CSR может быть использован в дальнейшем для перегенерации сертификата в доменном центре сертификации.
+openssl req -new -nodes -keyout ./certs/server.key -out request.csr -subj "/C=RU/ST=Perm Kray/L=Perm/O=Sirius/CN=$ROSTELL_DNS_NAME" -config ./openssl.cnf
+yes | openssl ca -extensions v3_req -in request.csr -out ./certs/server.crt -config ./openssl.cnf
+rm -f certs/00.pem
+
+# Перемещение сертификатов в рабочую папку приложения и папку для возможности применить сертификат и на хосте с Ростеллом
+cp ./certs/server.key /sirius_core/ssl
+cp ./certs/server.crt /sirius_core/ssl
+mkdir /cert
+cp /openssl/sirius_CA/root_ca.crt /cert
+mv ./certs/* /cert
+
