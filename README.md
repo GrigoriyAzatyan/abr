@@ -102,9 +102,11 @@ docker run -dt --name sirius-core -p 4444:4444 -v /sirius_core:/sirius_core siri
 
 ## 8. Как запустить команду внутри контейнера:
 
+## 8.1. Войти в командную оболочку bash:
 ```
 docker exec -it sirius-core bash
 ```
-
 Выход командой exit или Ctrl+D.
 
+## 8.2. Запустить код приложения:
+`docker exec -it sirius-core python app.py`
