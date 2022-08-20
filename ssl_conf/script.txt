@@ -31,4 +31,5 @@ cp ./certs/server.crt /sirius_core/ssl
 mkdir /cert
 cp /openssl/sirius_CA/root_ca.crt /cert
 mv ./certs/* /cert
+chown -R sirius:sirius /cert
 
