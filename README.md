@@ -108,5 +108,5 @@ docker exec -it sirius-core bash
 ```
 Выход командой exit или Ctrl+D.
 
-## 8.2. Запустить код приложения:
+## 8.2. Запустить исполняемый код приложения:
 `docker exec -it sirius-core python app.py`
