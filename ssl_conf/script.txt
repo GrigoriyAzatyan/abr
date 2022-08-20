@@ -14,6 +14,7 @@ cd /openssl
 
 #Создание CA
 mkdir ./sirius_CA
+mkdir ./certs
 openssl genrsa -out ./sirius_CA/root_ca.key -passout pass:sirius 4096
 openssl req -config ./openssl.cnf -key ./sirius_CA/root_ca.key -new -x509 -days 7300 -sha256 -extensions v3_ca -out  ./sirius_CA/root_ca.crt  -subj "/C=RU/ST=Perm Kray/L=Perm/O=Sirius/CN=Sirius_CA"
 touch ./sirius_CA/index.txt
