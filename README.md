@@ -88,6 +88,7 @@ docker build -t sirius-core .
 
 ```
 mkdir /sirius_core
+chown 1000:1000 /sirius_core
 ```
 
 Перенесите все содержимое корневой папки с кодом в папку /sirius_core. 
