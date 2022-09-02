@@ -97,7 +97,7 @@ mkdir /sirius_core
 ## 7. Создание и запуск контейнера:
 
 ```
-docker run -dt --name sirius-core -p 4444:4444 -v /sirius_core:/sirius_core sirius-core:latest
+docker run -dt --name sirius-core -p 4444:4444 -v /sirius_core:/sirius_core gregory78/sirius-core:latest
 ```
 
 ## 8. Как запустить команду внутри контейнера:
