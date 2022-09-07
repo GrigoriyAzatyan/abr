@@ -72,6 +72,7 @@ ENTRYPOINT /bin/bash
 
 * Пароль учетки LDAP: **LDAP_PASS**
 
+**Заполненный список этих переменных в формате ИМЯ=ЗНАЧЕНИЕ сохрание в файле secrets**.
 
 ## 5. Сборка образа из Dockerfile
 
@@ -98,7 +99,7 @@ chown 1000:1000 /sirius_core
 ## 7. Создание и запуск контейнера:
 
 ```
-docker run -dt --name sirius-core -p 4444:4444 -v /sirius_core:/sirius_core gregory78/sirius-core:latest
+docker run -dt --name sirius-core -e ./secrets -p 4444:4444 -v /sirius_core:/sirius_core gregory78/sirius-core:latest
 ```
 
 ## 8. Как запустить команду внутри контейнера:
