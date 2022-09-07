@@ -43,36 +43,51 @@ ENTRYPOINT /bin/bash
 
 
 ## 4. Подготовка переменных окружения
-Перед сборкой Docker-образа **обязательно заполните актуальные значения переменных в файле secrets**.
+Перед сборкой Docker-образа **обязательно создайте в текущей папке файл с именем "secrets"**, который заполните по указанному ниже шаблону.
 Эти значения далее могут быть использованы в любом программном коде, запущенном внутри контейнера:
 
-* Пароль PostgreSQL: **PG_PASS**
+```
+### Формат: ПЕРЕМЕННАЯ=значение ###
 
-* IP кластера PostgreSQL: **PG_HOST**
+#Пароль PostgreSQL:
+PG_PASS=
 
-* DNS-имя сервера TrueConf: **TRUECONF_DNS_NAME**
+#IP кластера PostgreSQL:
+PG_HOST=
 
-* Client_id API TrueConf сервера: **TRUECONF_CLIENT_ID**
+#DNS-имя сервера TrueConf:
+TRUECONF_DNS_NAME=
 
-* Client_secret API TrueConf сервера: **TRUECONF_CLIENT_SECRET**
+#Client_id API TrueConf сервера:
+TRUECONF_CLIENT_ID=
 
-* DNS-имя сервера Ростелл: **ROSTELL_DNS_NAME**
+#Client_secret API TrueConf сервера:
+TRUECONF_CLIENT_SECRET=
 
-* Коммуникационный домен Ростелл: **ROSTELL_COMM_DOMAIN**
+#DNS-имя сервера Ростелл:
+ROSTELL_DNS_NAME=rostell.domain.com
 
-* Учетка Ростелл с доступом к API: **ROSTELL_LOGIN**
+#Коммуникационный домен Ростелл:
+ROSTELL_COMM_DOMAIN=
 
-* Пароль учетки Ростелл: **ROSTELL_PASS**
+#Учетка Ростелл с доступом к API:
+ROSTELL_LOGIN=
 
-* IP контроллера домена LDAP: **LDAP_DC**
+#Пароль учетки Ростелл:
+ROSTELL_PASS=
 
-* Краткое имя домена LDAP (префикс для учеток): **LDAP_DOMAIN**
+#IP контроллера домена LDAP:
+LDAP_DC=
 
-* Учетка для доступа в LDAP: **LDAP_LOGIN**
+#Краткое имя домена LDAP (префикс для учеток):
+LDAP_DOMAIN=
 
-* Пароль учетки LDAP: **LDAP_PASS**
+#Учетка для доступа в LDAP:
+LDAP_LOGIN=
 
-**Заполненный список этих переменных в формате ИМЯ=ЗНАЧЕНИЕ сохрание в файле secrets**.
+#Пароль учетки LDAP:
+LDAP_PASS=
+```
 
 ## 5. Сборка образа из Dockerfile
 
