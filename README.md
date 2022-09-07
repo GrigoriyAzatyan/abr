@@ -93,7 +93,7 @@ TRUECONF_CLIENT_ID=
 TRUECONF_CLIENT_SECRET=
 
 #DNS-имя сервера Ростелл:
-ROSTELL_DNS_NAME=rostell.domain.com
+ROSTELL_DNS_NAME=
 
 #Коммуникационный домен Ростелл:
 ROSTELL_COMM_DOMAIN=
