@@ -120,7 +120,7 @@ LDAP_PASS=
 ## 7. Создание и запуск контейнера:
 
 ```
-docker run -dt --name sirius-core --env-file ./secrets --network host -v /sirius_core:/sirius_core gregory78/sirius-core:latest
+docker run -dt --name sirius-core --restart unless-stopped --env-file ./secrets --network host -v /sirius_core:/sirius_core gregory78/sirius-core:latest
 ```
 
 ## 8. Как запустить команду внутри контейнера:
